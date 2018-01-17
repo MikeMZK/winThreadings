@@ -14,46 +14,48 @@ namespace winThreadings
 {
     public partial class frmMain : Form
     {
-        Stopwatch sw = new Stopwatch();
-        string currenttime = "00:00:00";
+        Thread rot;
+        Thread blau;
+        Random rnd;
 
         public frmMain()
         {
             InitializeComponent();
-            lblStoppuhr.Text = currenttime;
-            timerT.Interval = 1;
+
+            rnd = new Random();
         }
 
-        private void btnBeenden_Click(object sender, EventArgs e)
+        private void btnRot_Click(object sender, EventArgs e)
         {
-            //this.Close();
+            rot = new Thread(Rot);
+            rot.Start();
         }
-        private void btnStart_Click(object sender, EventArgs e)
+        private void btnBlau_Click(object sender, EventArgs e)
         {
-            Thread th = new Thread(ThreadMethod);
-            timerT.Enabled = true;
-            th.Start();
+            blau = new Thread(Blau);
+            blau.Start();
         }
 
-        private void ThreadMethod()
+        private void Rot()
         {
-            sw.Start();
-            Thread.Sleep(2132);
+            for (int i = 0; i < 50; i++)
+            {
+                this.CreateGraphics().DrawRectangle(new Pen(Brushes.Red, 4), new Rectangle(rnd.Next(0, this.Width), rnd.Next(0, this.Height), 20, 20));
+                Thread.Sleep(100); 
+            }
 
-            TimeSpan ts = sw.Elapsed;
-
-            // Format and display the TimeSpan value.
-            string elapsedTime = String.Format("{0:00}:{1:00}.{2:00}",
-                ts.Minutes, ts.Seconds,
-                ts.Milliseconds / 10);
-            currenttime = elapsedTime;
-
-            sw.Stop();
+            MessageBox.Show("Rot fertig", "Rot fertig", MessageBoxButtons.OK);
         }
-
-        private void timerT_Tick(object sender, EventArgs e)
+        private void Blau()
         {
-            lblStoppuhr.Text = currenttime;
+            for (int i = 0; i < 50; i++)
+            {
+                this.CreateGraphics().DrawRectangle(new Pen(Brushes.Blue, 4), new Rectangle(rnd.Next(0, this.Width), rnd.Next(0, this.Height), 20, 20));
+                Thread.Sleep(100);
+            }
+
+            MessageBox.Show("Blau fertig", "Blau fertig", MessageBoxButtons.OK);
         }
+
     }
 }
