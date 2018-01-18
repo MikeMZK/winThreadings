@@ -30,6 +30,8 @@
         {
             this.btnRot = new System.Windows.Forms.Button();
             this.btnBlau = new System.Windows.Forms.Button();
+            this.pbHintergrund = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbHintergrund)).BeginInit();
             this.SuspendLayout();
             // 
             // btnRot
@@ -56,15 +58,26 @@
             this.btnBlau.UseVisualStyleBackColor = false;
             this.btnBlau.Click += new System.EventHandler(this.btnBlau_Click);
             // 
+            // pbHintergrund
+            // 
+            this.pbHintergrund.BackColor = System.Drawing.Color.Transparent;
+            this.pbHintergrund.Location = new System.Drawing.Point(0, 81);
+            this.pbHintergrund.Name = "pbHintergrund";
+            this.pbHintergrund.Size = new System.Drawing.Size(1077, 431);
+            this.pbHintergrund.TabIndex = 1;
+            this.pbHintergrund.TabStop = false;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1077, 512);
+            this.Controls.Add(this.pbHintergrund);
             this.Controls.Add(this.btnBlau);
             this.Controls.Add(this.btnRot);
             this.Name = "frmMain";
             this.Text = "Threading";
+            ((System.ComponentModel.ISupportInitialize)(this.pbHintergrund)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -73,6 +86,7 @@
 
         private System.Windows.Forms.Button btnRot;
         private System.Windows.Forms.Button btnBlau;
+        private System.Windows.Forms.PictureBox pbHintergrund;
     }
 }
 
