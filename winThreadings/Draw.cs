@@ -22,11 +22,7 @@ namespace winThreadings
             rnd = new Random();
         }
 
-        public async void DrawRectangle(int width, int height, Brush color)
-        {
-            await Task.Run(() => DoDraw(width, height, color));
-        }
-        private void DoDraw(int width, int height, Brush color)
+        public void DrawRectangle(int width, int height, Brush color)
         {
             g.DrawRectangle(new Pen(color, 4), new Rectangle(rnd.Next(0, pb.Width), rnd.Next(0, pb.Height), width, height));
         }

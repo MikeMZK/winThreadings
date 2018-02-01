@@ -25,25 +25,20 @@ namespace winThreadings
 
             rnd = new Random();
             d = new Draw(pbHintergrund);
-
-            ThreadPool.SetMaxThreads(1, 1);
-            ThreadPool.QueueUserWorkItem(Rot);
         }
 
         private void btnRot_Click(object sender, EventArgs e)
         {
             rot = new Thread(Rot);
-            rot.IsBackground = true;
             rot.Start();
         }
         private void btnBlau_Click(object sender, EventArgs e)
         {
             blau = new Thread(Blau);
-            blau.IsBackground = true;
             blau.Start();
         }
 
-        private void Rot(Object stateInfo)
+        private void Rot()
         {
             for (int i = 0; i < 50; i++)
             {
@@ -53,7 +48,7 @@ namespace winThreadings
 
             MessageBox.Show("Rot fertig", "Rot fertig", MessageBoxButtons.OK);
         }
-        private void Blau(Object stateInfo)
+        private void Blau()
         {
             for (int i = 0; i < 50; i++)
             {
