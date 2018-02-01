@@ -17,14 +17,12 @@ namespace winThreadings
         Thread rot;
         Thread blau;
         Random rnd;
-        Draw d;
 
         public frmMain()
         {
             InitializeComponent();
 
             rnd = new Random();
-            d = new Draw(pbHintergrund);
         }
 
         private void btnRot_Click(object sender, EventArgs e)
@@ -42,8 +40,8 @@ namespace winThreadings
         {
             for (int i = 0; i < 50; i++)
             {
-                d.DrawRectangle(20, 20, Brushes.Red);
-                Thread.Sleep(100);
+                this.CreateGraphics().DrawRectangle(new Pen(Brushes.Red, 4), new Rectangle(rnd.Next(0, this.Width), rnd.Next(0, this.Height), 20, 20));
+                Thread.Sleep(100); 
             }
 
             MessageBox.Show("Rot fertig", "Rot fertig", MessageBoxButtons.OK);
@@ -52,7 +50,7 @@ namespace winThreadings
         {
             for (int i = 0; i < 50; i++)
             {
-                d.DrawRectangle(20, 20, Brushes.Blue);
+                this.CreateGraphics().DrawRectangle(new Pen(Brushes.Blue, 4), new Rectangle(rnd.Next(0, this.Width), rnd.Next(0, this.Height), 20, 20));
                 Thread.Sleep(100);
             }
 
